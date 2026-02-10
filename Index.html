@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Janala</title>
+
+  <!-- Tailwind + DaisyUI -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+<!-- ================= Navbar ================= -->
+<header class="shadow-md bg-white">
+  <div class="navbar container mx-auto px-4">
+    <div class="navbar-start flex items-center gap-4">
+      <div class="dropdown lg:hidden">
+        <label tabindex="0" class="btn btn-ghost text-xl">☰</label>
+        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+          <li><a>FAQ</a></li>
+          <li><a>Learn</a></li>
+          <li><a>Logout</a></li>
+        </ul>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <span class="text-xl font-semibold">English</span>
+        <img src="./assets/logo.png" class="w-8" alt="logo">
+        <span class="text-xl font-semibold">জানালা</span>
+      </div>
+    </div>
+
+    <div class="navbar-end hidden lg:flex gap-4">
+      <button class="btn btn-ghost">FAQ</button>
+      <button class="btn btn-ghost">Learn</button>
+      <button class="btn btn-outline btn-primary">Logout</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= Hero Section ================= -->
+<section class="bg-white min-h-screen flex items-center py-10">
+  <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+    <div class="space-y-6">
+      <h1 class="text-5xl font-bold">
+        <span class="text-sky-500">English</span> is Easy!!
+      </h1>
+      <p class="text-gray-600 max-w-md">
+        আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। Interactive lessons আপনাকে নতুন Level এ নিয়ে যাবে।
+      </p>
+
+      <div class="space-y-3 max-w-sm">
+        <input class="input input-bordered w-full" placeholder="Enter Your Name">
+        <input type="password" class="input input-bordered w-full" placeholder="Enter Your Password">
+        <button class="btn bg-indigo-600 text-white w-full">Get Started</button>
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <img src="./assets/hero-student.png" class="max-w-md w-full" alt="hero">
+    </div>
+  </div>
+</section>
+
+<!-- ================= Search Section ================= -->
+<section class="py-6 flex justify-center">
+  <div class="join">
+    <input id="input-search" class="input input-bordered join-item" placeholder="Search word">
+    <button id="btn-search" class="btn btn-neutral join-item">Search</button>
+  </div>
+</section>
+
+<!-- ================= Lesson Buttons ================= -->
+<section class="py-10">
+  <h1 class="text-center font-bold text-5xl mb-6">
+    <span class="text-sky-500">Let's</span> Learn Vocabularies
+  </h1>
+  <div id="levelcontainer" class="flex flex-wrap gap-4 justify-center"></div>
+</section>
+
+<!-- ================= Default Info ================= -->
+<section id="default-info" class="w-11/12 mx-auto text-center bg-gray-200 border rounded-xl py-6 shadow-sm">
+  <h1 class="text-xl font-semibold">আপনি এখনো কোন Lesson Select করেন ন</h1>
+  <p class="text-2xl mt-3 font-bold">একটি Lesson Select করুন।</p>
+</section>
+
+<!-- ================= Spinner ================= -->
+<section class="flex justify-center my-10">
+  <span id="spinner" class="loading loading-bars loading-xl hidden"></span>
+</section>
+
+<!-- ================= Word Container ================= -->
+<section
+  id="word-container"
+  class="bg-gray-100 p-10 w-11/12 mx-auto my-10 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+</section>
+
+<!-- ================= Modal ================= -->
+<dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="details-container"></div>
+    <div class="modal-action">
+      <form method="dialog">
+        <button class="btn">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Title -->
+    <h2 class="text-3xl font-bold text-center mb-12">
+      <span class="text-cyan-500">Frequently</span> Asked Questions
+    </h2>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+      <!-- FAQ Item -->
+      <div class="bg-white rounded-lg shadow p-5">
+        <button class="w-full flex justify-between items-center text-left faq-btn">
+          <span class="font-medium">1. How can I start learning English on this website?</span>
+          <span class="text-gray-400">-</span>
+        </button>
+        <div class="mt-2 text-gray-600 faq-content">
+          You can start by exploring our beginner lessons, interactive exercises, and quizzes. We also offer structured courses to guide you step by step.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <button class="w-full flex justify-between items-center text-left faq-btn">
+          <span class="font-medium">2. Is this website free to use?</span>
+          <span class="text-gray-400">+</span>
+        </button>
+        <div class="mt-2 text-gray-600 faq-content hidden">
+          Yes! The website offers free beginner lessons and resources.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <button class="w-full flex justify-between items-center text-left faq-btn">
+          <span class="font-medium">3. Do I need to create an account?</span>
+          <span class="text-gray-400">+</span>
+        </button>
+        <div class="mt-2 text-gray-600 faq-content hidden">
+          Creating an account is optional but recommended for tracking your progress.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <button class="w-full flex justify-between items-center text-left faq-btn">
+          <span class="font-medium">4. How can I build my English vocabulary?</span>
+          <span class="text-gray-400">+</span>
+        </button>
+        <div class="mt-2 text-gray-600 faq-content hidden">
+          Regular practice, interactive exercises, and reading materials will help you expand your vocabulary.
+        </div>
+      </div>
+
+      <div class="bg-white rounded-lg shadow p-5">
+        <button class="w-full flex justify-between items-center text-left faq-btn">
+          <span class="font-medium">5. Do you offer certificates for completed courses?</span>
+          <span class="text-gray-400">+</span>
+        </button>
+        <div class="mt-2 text-gray-600 faq-content hidden">
+          Yes, certificates are provided for completed structured courses.
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-12 text-center text-gray-500">
+      <div class="flex justify-center items-center space-x-2">
+        <img src="./assets/logo.png" alt="English Logo">
+        <span class="font-medium">English জানালা</span>
+      </div>
+      <p class="mt-2">ইংরেজি শিখুন সহজে</p>
+      <p class="text-sm mt-1">Providing ED-Tech Applications since 2025</p>
+      <div class="flex justify-center space-x-4 mt-3">
+        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="text-gray-600 hover:text-gray-800"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tailwind + FAQ toggle JS -->
+<script>
+  const faqButtons = document.querySelectorAll(".faq-btn");
+  faqButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const content = btn.nextElementSibling;
+      content.classList.toggle("hidden");
+      const icon = btn.querySelector("span.text-gray-400");
+      icon.textContent = content.classList.contains("hidden") ? "+" : "-";
+    });
+  });
+</script>
+
+<script src="./Janala.js"></script>
+</body>
+</html>
