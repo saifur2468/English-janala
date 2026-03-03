@@ -402,12 +402,3 @@ document.getElementById("btn-search")?.addEventListener("click", () => {
    Initial Call
 ============================= */
 loadLessons();
-
-
-
-
-
-
-
-
-
